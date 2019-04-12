@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.StudentDao">
+    <select id="findAll" resultMap="resultstu">
+        select * from student
+    </select>
+    <select id="findById" resultMap="resultstu">
+        select * from student where stuid=#{id}
+    </select>
+    <insert id="insert">
+        insert into student(stuname) values(#{name})
+    </insert>
+    <update id="update">
+        update student set stuname=#{name} where stuid=#{id}
+    </update>
+    <delete id="delete">
+        delete from student where stuid=#{id}
+    </delete>
+    <resultMap type="Student" id="resultstu">
+        <id property="id" column="stuid"/>
+        <result property="name" column="stuname"/>
+    </resultMap>
+</mapper>
